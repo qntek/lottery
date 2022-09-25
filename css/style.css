@@ -1,0 +1,100 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+body {
+  position: relative;
+  background: radial-gradient(circle, rgb(68, 136, 191) 53%, rgb(38, 89, 153) 100%);
+  width: 100%;
+  height: 100%;
+  font-family: "Rubik Dirt", cursive;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 8vh;
+  margin: 4rem 2rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: rgba(231, 230, 218, 0.75);
+  border: 1px solid black;
+  border-radius: 2rem;
+}
+.box p {
+  position: absolute;
+  right: 5px;
+  top: -20px;
+  color: rgb(21, 21, 21);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.pickBall__box {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  background-color: rgba(231, 230, 218, 0.75);
+  border-radius: 2rem;
+  border: 1px solid rgb(21, 21, 21);
+}
+
+footer {
+  width: 100%;
+  height: 35px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid rgb(21, 21, 21);
+}
+footer p {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  font-size: 1.4rem;
+}
+footer p a {
+  text-decoration: none;
+  color: rgb(21, 21, 21);
+}/*# sourceMappingURL=style.css.map */
