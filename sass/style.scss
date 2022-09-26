@@ -2,7 +2,6 @@
 @import 'colors';
 
 body {
-	position: relative;
 	background: $main_blue_gradient;
 	width: 100%;
 	height: 100%;
@@ -10,6 +9,7 @@ body {
 }
 
 .wrapper {
+	position: relative;
 	margin: 0 auto;
 	width: 80%;
 	height: 100vh;
@@ -20,19 +20,32 @@ body {
 	align-items: center;
 	justify-content: flex-start;
 }
-
+.menu {
+	position: absolute;
+	left: 0rem;
+	top: 0rem;
+	padding-top: 0.5rem;
+	cursor: pointer;
+	z-index: 100;
+	.ti-dots-circle-horizontal {
+		font-size: 3rem;
+		color: rgb(44, 40, 40);
+		// transition: scale 0.3s;
+	}
+}
 .box {
 	position: relative;
 	width: 100%;
 	height: 8vh;
-	margin: 4rem 2rem;
+	min-height: 50px;
+	margin: 0 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: nowrap;
 	background-color: $main_bgc;
 	border: 1px solid black;
-	border-radius: 2rem;
+	border-radius: 1.5rem;
 }
 .box__header {
 	position: absolute;
@@ -42,35 +55,64 @@ body {
 	text-transform: uppercase;
 	font-size: 1.5rem;
 }
-
+.input__box {
+	margin-top: 4rem;
+}
+.output__box {
+	margin-top: 4rem;
+}
 .pickBall__box {
 	position: relative;
 	width: 100%;
-	height: 55vh;
+	height: 45vh;
+	min-height: 250px;
 	margin-top: 4rem;
-	margin-bottom: 3rem;
+	margin-bottom: 1.6rem;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	align-items: center;
+	place-items: center;
 	background-color: $main_bgc;
-	border-radius: 2rem;
+	border-radius: 1.5rem;
 	border: 1px solid $border_color;
+}
+
+@import 'balls';
+
+.button__box {
+	margin: 0 auto;
+	padding: 1rem;
+	width: 130px;
+	height: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 4rem;
+	color: rgba(0, 0, 0,.1);
+	
+}
+.btn_active {
+	color: $border_color;
 }
 
 footer {
 	width: 100%;
-	justify-content: flex-end;
 	min-width: 300px;
 	height: 35px;
+	margin-top: auto;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	border-top: 1px solid $border_color;
 	p {
 		font-size: 1.4rem;
-		a {
-			text-decoration: none;
-			color: $border_color;
-		}
+	}
+	a {
+		text-decoration: none;
+		color: $border_color;
+	}
+	.ti-brand-github {
+		font-size: 1.6rem;
 	}
 }
