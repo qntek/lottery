@@ -5,6 +5,9 @@ const drawnNumbers = [];
 const clearUserNumbersBtn = document.querySelector('.ti-x'); //btn to clear user and drawn numbers
 const playBtn = document.querySelector('.ti-player-play'); //btn to start the game
 const insertBox = document.querySelector('.input__box');
+const menuBtn = document.querySelector('.menu');
+const singleDrawOption = document.getElementById('opt_1');
+const drawToWinOption = document.getElementById('opt_2');
 
 footerYear.textContent = new Date().getFullYear();
 pickBallBox.addEventListener('click', (e) => {
@@ -15,6 +18,7 @@ clearUserNumbersBtn.addEventListener('click', () => {
 	userNumbers = [];
 	controlColorOfBtns();
 });
+menuBtn.addEventListener('click', toggleMenuNav);
 
 function handlePickedBall(e) {
 	let value = +e.target.textContent;
@@ -70,4 +74,13 @@ function sortArray(array) {
 function clearInputBox() {
 	const inputBox = insertBox.querySelectorAll('.ball');
 	for (const number of inputBox) number.remove();
+}
+
+function toggleMenuNav() {
+	const navMenu = document.querySelector('.nav__box')
+	if (navMenu.classList.contains('nav__active')) {
+		navMenu.classList.remove('nav__active');
+	} else {
+		navMenu.classList.add('nav__active');
+	}
 }

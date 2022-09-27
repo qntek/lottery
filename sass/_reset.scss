@@ -5,6 +5,14 @@
 	margin: 0;
 	padding: 0;
 }
+*:focus {
+	outline: 1px solid transparent;
+}
+*::selection {
+	color: black;
+	outline: 1px solid transparent;
+}
+
 html,
 body {
 	height: 100%;

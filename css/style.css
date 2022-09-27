@@ -6,6 +6,20 @@
   padding: 0;
 }
 
+*:focus {
+  outline: 1px solid transparent;
+}
+
+*::-moz-selection {
+  color: black;
+  outline: 1px solid transparent;
+}
+
+*::selection {
+  color: black;
+  outline: 1px solid transparent;
+}
+
 html,
 body {
   height: 100%;
@@ -451,4 +465,53 @@ footer a {
 }
 footer .ti-brand-github {
   font-size: 1.6rem;
+}
+
+.nav__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(189, 205, 210);
+  z-index: 10;
+  transition: transform 0.3s linear;
+}
+.nav__box_text {
+  font-size: 2rem;
+  padding: 1rem;
+}
+.nav__box_options {
+  display: flex;
+  flex-direction: column;
+}
+.nav__box_option {
+  padding: 0.7rem;
+  font-size: 3rem;
+  border: 1px solid transparent;
+  transition: transform 0.15s;
+}
+.nav__box_option:hover, .nav__box_option:focus {
+  transform: scale(1.05);
+}
+.nav__box input {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  color: black;
+  -webkit-appearance: radio;
+     -moz-appearance: radio;
+          appearance: radio;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.nav__active {
+  transform: translateX(100%);
 }/*# sourceMappingURL=style.css.map */

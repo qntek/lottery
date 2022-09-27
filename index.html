@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
-    <link rel="shortcut icon" href="./img/ico/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/ico/lottery_icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/main.js" defer></script>
     <title>Lottery - lets play!</title>
@@ -20,7 +20,7 @@
         <div class="menu"><i class="ti ti-dots"></i></div>
         <div class="box input__box">
             <p class="box__header">Chosen numbers</p>
-            
+
         </div>
         <div class="box output__box">
             <p class="box__header">Drawn numbers</p>
@@ -189,11 +189,33 @@
             <div class="button__box_go"><i class="ti ti-player-play"></i></div>
         </div>
         <footer>
-            <div class="footer__logo_box"><a href="https://github.com/qntek" target="_blank"><i class="ti ti-brand-github"></i></a></div>
-            <p class="footer__text"><a href="mailto:tomasz.kuncio@gmail.com">by Tomasz Kuncio © <span id="year"></span></a>
+            <div class="footer__logo_box"><a href="https://github.com/qntek" target="_blank"><i
+                        class="ti ti-brand-github"></i></a></div>
+            <p class="footer__text"><a href="mailto:tomasz.kuncio@gmail.com">by Tomasz Kuncio © <span
+                        id="year"></span></a>
             </p>
         </footer>
     </div>
+
+    <nav>
+        <div class="nav__box">
+
+            <p class="nav__box_text">OPTIONS
+            </p>
+
+            <div class="nav__box_options">
+                <div class="nav__box_option">
+                    <input class="nav__box_option-btn" type="radio" name="option" value='1' id="opt_1" checked>
+                    <label for="opt_1">SINGLE DRAW</label>
+                </div>
+                <div class="nav__box_option">
+                    <input type="radio" name="option" value='2' id="opt_2">
+                    <label class="nav__box_option-btn" for="opt_2">DRAW TO WIN</label>
+                </div>
+            </div>
+        
+        </div>
+    </nav>
 
 </body>
 </html>

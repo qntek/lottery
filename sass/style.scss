@@ -96,7 +96,8 @@ body {
 	align-items: center;
 	font-size: 4rem;
 	color: rgba(0, 0, 0, 0.1);
-	&_clear, &_go {
+	&_clear,
+	&_go {
 		cursor: pointer;
 	}
 }
@@ -119,7 +120,7 @@ footer {
 		align-items: center;
 		width: 22px;
 		height: 22px;
-		margin-left: 0.5rem;;
+		margin-left: 0.5rem;
 		border-radius: 50%;
 		background-color: $main_bgc;
 	}
@@ -136,3 +137,47 @@ footer {
 	}
 }
 
+.nav__box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100vw;
+	height: 100vh;
+	background-color: $nav_bgc;
+	z-index: 10;
+	transition: transform 0.3s linear;
+	&_text {
+		font-size: 2rem;
+		padding: 1rem;
+	}
+	&_options {
+		display: flex;
+		flex-direction: column;
+	}
+	&_option {
+		padding: 0.7rem;
+		font-size: 3rem;
+		border: 1px solid transparent;
+		transition: transform 0.15s;
+	}
+	&_option:hover,
+	&_option:focus {
+		transform: scale(1.05);
+	}
+	input {
+		width: 2rem;
+		height: 2rem;
+		margin-right: 1rem;
+		color: black;
+		appearance: radio;
+		user-select: none;
+	}
+
+}
+.nav__active {
+	transform: translateX(100%);
+}
