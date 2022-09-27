@@ -147,37 +147,59 @@ footer {
 	left: -100%;
 	width: 100vw;
 	height: 100vh;
-	background-color: $nav_bgc;
+	background: $main_blue_gradient;
 	z-index: 10;
 	transition: transform 0.3s linear;
 	&_text {
 		font-size: 2rem;
-		padding: 1rem;
 	}
 	&_options {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 	}
 	&_option {
-		padding: 0.7rem;
+		display: flex;
+		flex-direction: column;
+		min-width: 250px;
+		max-width: 80%;
+		padding: 1rem;
 		font-size: 3rem;
 		border: 1px solid transparent;
 		transition: transform 0.15s;
+		overflow: hidden;
+		&-btn {
+			display: inline-block;
+			text-align: center;
+		}
 	}
 	&_option:hover,
 	&_option:focus {
 		transform: scale(1.05);
 	}
-	input {
-		width: 2rem;
-		height: 2rem;
-		margin-right: 1rem;
-		color: black;
-		appearance: radio;
-		user-select: none;
+	&_option_underline {
+		width: 100%;
+		margin-top: 0;
+		padding-top: 5px;
+		display: none;
+		
 	}
-
 }
 .nav__active {
 	transform: translateX(100%);
+}
+.visible {
+	position: relative;
+	display: block;
+	animation: slideRight .1s linear;
+}
+
+
+@keyframes slideRight {
+	from {
+		transform: translateX(-100%)
+	}
+	to {
+		transform: translateX(0)
+	}
 }

@@ -19,6 +19,9 @@ clearUserNumbersBtn.addEventListener('click', () => {
 	controlColorOfBtns();
 });
 menuBtn.addEventListener('click', toggleMenuNav);
+singleDrawOption.addEventListener('click', swapBetweenOptions);
+drawToWinOption.addEventListener('click', swapBetweenOptions);
+
 
 function handlePickedBall(e) {
 	let value = +e.target.textContent;
@@ -82,5 +85,15 @@ function toggleMenuNav() {
 		navMenu.classList.remove('nav__active');
 	} else {
 		navMenu.classList.add('nav__active');
+	}
+}
+
+function swapBetweenOptions() {
+	if (singleDrawOption.nextElementSibling.classList.contains('visible')) {
+		singleDrawOption.nextElementSibling.classList.remove('visible');
+		drawToWinOption.nextElementSibling.classList.add('visible');
+	} else if (drawToWinOption.nextElementSibling.classList.contains('visible')) {
+		singleDrawOption.nextElementSibling.classList.add('visible');
+		drawToWinOption.nextElementSibling.classList.remove('visible');
 	}
 }
