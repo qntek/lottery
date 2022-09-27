@@ -21,7 +21,7 @@ function handlePickedBall(e) {
 	if (value > 0 && value < 50) {
 	} else return;
 	pushBallToUserNumbers(value);
-	insertIntoUserNumbersBox(insertBox, userNumbers)
+	insertIntoUserNumbersBox(insertBox, userNumbers);
 }
 
 function pushBallToUserNumbers(value) {
@@ -33,13 +33,16 @@ function pushBallToUserNumbers(value) {
 }
 
 function insertIntoUserNumbersBox(obj, array) {
-	clearInputBox()
+	clearInputBox();
 	for (const number of array) {
-		const ball = document.createElement('div')
-		ball.classList.add('ball')
-		ball.classList.add('ball_js')
+		const ball = document.createElement('div');
+		ball.classList.add('ball');
+		ball.classList.add('ball_js');
+		if (array.indexOf(number) === array.length - 1) {
+			ball.classList.add('ball_js_animation');
+		}
 		ball.textContent = number;
-		obj.appendChild(ball)
+		obj.appendChild(ball);
 	}
 }
 
@@ -57,14 +60,14 @@ function sortArray(array) {
 		if (a > b) {
 			return 1;
 		} else if (a < b) {
-			return -1
+			return -1;
 		} else if (a == b) {
-			return 0
+			return 0;
 		}
 	});
 }
 
 function clearInputBox() {
-	const inputBox = insertBox.querySelectorAll('.ball')
+	const inputBox = insertBox.querySelectorAll('.ball');
 	for (const number of inputBox) number.remove();
 }

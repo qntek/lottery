@@ -28,6 +28,7 @@ select {
 }
 
 body {
+  position: relative;
   background: radial-gradient(circle, rgb(68, 136, 191) 53%, rgb(38, 89, 153) 100%);
   width: 100%;
   height: 100%;
@@ -55,7 +56,7 @@ body {
   cursor: pointer;
   z-index: 100;
 }
-.menu .ti-dots-circle-horizontal {
+.menu .ti-dots {
   font-size: 3rem;
   color: rgb(44, 40, 40);
 }
@@ -73,6 +74,7 @@ body {
   background-color: rgba(231, 230, 218, 0.75);
   border: 1px solid black;
   border-radius: 1.5rem;
+  box-shadow: 1px 1px 2px black;
 }
 
 .box__header {
@@ -107,6 +109,7 @@ body {
   background-color: rgba(231, 230, 218, 0.75);
   border-radius: 1.5rem;
   border: 1px solid rgb(21, 21, 21);
+  box-shadow: 1px 1px 2px black;
 }
 
 .ball {
@@ -121,10 +124,16 @@ body {
   border: 1px solid rgb(21, 21, 21);
   cursor: pointer;
   font-size: 1.4rem;
+  box-shadow: 1px 1px 2px black;
 }
 
 .ball_js {
   transform: scale(1.4);
+}
+
+.ball_js_animation {
+  -webkit-animation: popup 0.1s linear;
+          animation: popup 0.1s linear;
 }
 
 .ball_1 {
@@ -372,6 +381,27 @@ body {
   grid-column: 7/8;
 }
 
+@-webkit-keyframes popup {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 .button__box {
   margin: 0 auto;
   padding: 1rem;
@@ -382,6 +412,9 @@ body {
   align-items: center;
   font-size: 4rem;
   color: rgba(0, 0, 0, 0.1);
+}
+.button__box_clear, .button__box_go {
+  cursor: pointer;
 }
 
 .btn_active {
@@ -398,8 +431,19 @@ footer {
   align-items: center;
   border-top: 1px solid rgb(21, 21, 21);
 }
+footer .footer__logo_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background-color: rgba(231, 230, 218, 0.75);
+}
 footer p {
   font-size: 1.4rem;
+  margin-right: 0.5rem;
 }
 footer a {
   text-decoration: none;
