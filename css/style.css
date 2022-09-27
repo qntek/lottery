@@ -66,10 +66,10 @@ body {
   height: 8vh;
   min-height: 50px;
   margin: 0 2rem;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
   align-items: center;
-  flex-wrap: nowrap;
   background-color: rgba(231, 230, 218, 0.75);
   border: 1px solid black;
   border-radius: 1.5rem;
@@ -121,6 +121,10 @@ body {
   border: 1px solid rgb(21, 21, 21);
   cursor: pointer;
   font-size: 1.4rem;
+}
+
+.ball_js {
+  transform: scale(1.4);
 }
 
 .ball_1 {

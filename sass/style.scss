@@ -39,10 +39,13 @@ body {
 	height: 8vh;
 	min-height: 50px;
 	margin: 0 2rem;
-	display: flex;
-	justify-content: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+	place-items: center;
 	align-items: center;
-	flex-wrap: nowrap;
+	// display: flex;
+	// justify-content: space-evenly;
+	// flex-wrap: nowrap;
 	background-color: $main_bgc;
 	border: 1px solid black;
 	border-radius: 1.5rem;
@@ -89,8 +92,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 4rem;
-	color: rgba(0, 0, 0,.1);
-	
+	color: rgba(0, 0, 0, 0.1);
 }
 .btn_active {
 	color: $border_color;

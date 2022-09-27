@@ -1,3 +1,70 @@
-const footerYear = document.getElementById('year')
+const footerYear = document.getElementById('year');
+const pickBallBox = document.getElementById('ballBox');
+let userNumbers = [];
+const drawnNumbers = [];
+const clearUserNumbersBtn = document.querySelector('.ti-x'); //btn to clear user and drawn numbers
+const playBtn = document.querySelector('.ti-player-play'); //btn to start the game
+const insertBox = document.querySelector('.input__box');
 
 footerYear.textContent = new Date().getFullYear();
+pickBallBox.addEventListener('click', (e) => {
+	handlePickedBall(e);
+});
+clearUserNumbersBtn.addEventListener('click', () => {
+	clearInputBox();
+	userNumbers = [];
+	controlColorOfBtns();
+});
+
+function handlePickedBall(e) {
+	let value = +e.target.textContent;
+	if (value > 0 && value < 50) {
+	} else return;
+	pushBallToUserNumbers(value);
+	insertIntoUserNumbersBox(insertBox, userNumbers)
+}
+
+function pushBallToUserNumbers(value) {
+	if (userNumbers.length < 6 && !userNumbers.includes(value)) {
+		userNumbers.push(value);
+		controlColorOfBtns();
+		sortArray(userNumbers);
+	}
+}
+
+function insertIntoUserNumbersBox(obj, array) {
+	clearInputBox()
+	for (const number of array) {
+		const ball = document.createElement('div')
+		ball.classList.add('ball')
+		ball.classList.add('ball_js')
+		ball.textContent = number;
+		obj.appendChild(ball)
+	}
+}
+
+function controlColorOfBtns() {
+	if (userNumbers.length > 0) {
+		clearUserNumbersBtn.classList.add('btn_active');
+	} else clearUserNumbersBtn.classList.remove('btn_active');
+	if (userNumbers.length === 6) {
+		playBtn.classList.add('btn_active');
+	} else playBtn.classList.remove('btn_active');
+}
+
+function sortArray(array) {
+	array.sort((a, b) => {
+		if (a > b) {
+			return 1;
+		} else if (a < b) {
+			return -1
+		} else if (a == b) {
+			return 0
+		}
+	});
+}
+
+function clearInputBox() {
+	const inputBox = insertBox.querySelectorAll('.ball')
+	for (const number of inputBox) number.remove();
+}
