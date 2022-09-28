@@ -47,6 +47,10 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Rubik Dirt", cursive;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .wrapper {
@@ -548,5 +552,58 @@ footer .ti-brand-github {
   }
   to {
     transform: translateX(0);
+  }
+}
+@media (min-width: 390px) {
+  .menu {
+    padding-top: 0.8rem;
+  }
+  .menu .ti-dots {
+    font-size: 5rem;
+  }
+  .box {
+    height: 8.5vh;
+  }
+  .box__header {
+    top: -30px;
+    font-size: 1.8rem;
+  }
+  .input__box {
+    margin-top: 6rem;
+  }
+  .output__box {
+    margin-top: 4.5rem;
+  }
+  .pickBall__box {
+    height: 48vh;
+    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+  }
+  .ball {
+    width: 30px;
+    height: 30px;
+    padding: 15px;
+    font-size: 1.8rem;
+  }
+  .button__box {
+    margin: 0 auto;
+    padding: 2rem;
+    width: 200px;
+    height: 30px;
+    font-size: 5rem;
+    color: rgba(0, 0, 0, 0.1);
+  }
+  .nav__box_text {
+    font-size: 3rem;
+  }
+  .nav__box_option {
+    min-width: 300px;
+    max-width: 100%;
+    padding: 1rem;
+    font-size: 4rem;
+  }
+  .nav__box_option_underline {
+    margin-top: 0;
+    padding-top: 5px;
   }
 }/*# sourceMappingURL=style.css.map */
