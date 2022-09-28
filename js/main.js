@@ -31,7 +31,7 @@ function handlePickedBall(e) {
 	if (value > 0 && value < 50) {
 	} else return;
 	pushBallToUserNumbers(value);
-	insertIntoUserNumbersBox(insertBox, userNumbers);
+	insertIntoUserNumbersBox(insertBox, userNumbers, false);
 }
 
 function pushBallToUserNumbers(value) {
@@ -42,7 +42,7 @@ function pushBallToUserNumbers(value) {
 	}
 }
 
-async function insertIntoUserNumbersBox(obj, array, ms = 0) {
+async function insertIntoUserNumbersBox(obj, array, flag, ms = 0) {
 	clearDomBox(obj);
 	const putWithDelay = ms => {
 		return new Promise(resolve => setTimeout(resolve, ms))
@@ -52,7 +52,7 @@ async function insertIntoUserNumbersBox(obj, array, ms = 0) {
 		const ball = document.createElement('div');
 		ball.classList.add('ball');
 		ball.classList.add('ball_js');
-		if (array.indexOf(number) === array.length - 1) {
+		if ((array.indexOf(number) === array.length - 1) || flag) {
 			ball.classList.add('ball_js_animation');
 		}
 		ball.textContent = number;
@@ -139,7 +139,7 @@ function playBtnHandler() {
 		drawnNumbers = [];
 		clearDomBox(outputBox);
 		letsDrawNumbers();
-		insertIntoUserNumbersBox(outputBox, drawnNumbers, 500);
+		insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500);
 	}
 }
 
