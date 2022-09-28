@@ -171,18 +171,25 @@ footer {
 		&-btn {
 			display: inline-block;
 			text-align: center;
+			cursor: pointer;
 		}
 	}
 	&_option:hover,
 	&_option:focus {
 		transform: scale(1.05);
 	}
+	&_option_underline_box {
+		display: block;
+		width: 100%;
+		height: 11px;
+		overflow: hidden;
+		z-index: 1000;
+	}
 	&_option_underline {
 		width: 100%;
 		margin-top: 0;
 		padding-top: 5px;
 		display: none;
-		
 	}
 }
 .nav__active {

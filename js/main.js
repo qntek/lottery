@@ -19,9 +19,8 @@ clearUserNumbersBtn.addEventListener('click', () => {
 	controlColorOfBtns();
 });
 menuBtn.addEventListener('click', toggleMenuNav);
-singleDrawOption.addEventListener('click', swapBetweenOptions);
-drawToWinOption.addEventListener('click', swapBetweenOptions);
-
+singleDrawOption.addEventListener('click', singleDrawOptionHandler);
+drawToWinOption.addEventListener('click', drawToWinHandler);
 
 function handlePickedBall(e) {
 	let value = +e.target.textContent;
@@ -80,7 +79,7 @@ function clearInputBox() {
 }
 
 function toggleMenuNav() {
-	const navMenu = document.querySelector('.nav__box')
+	const navMenu = document.querySelector('.nav__box');
 	if (navMenu.classList.contains('nav__active')) {
 		navMenu.classList.remove('nav__active');
 	} else {
@@ -88,12 +87,35 @@ function toggleMenuNav() {
 	}
 }
 
-function swapBetweenOptions() {
-	if (singleDrawOption.nextElementSibling.classList.contains('visible')) {
-		singleDrawOption.nextElementSibling.classList.remove('visible');
-		drawToWinOption.nextElementSibling.classList.add('visible');
-	} else if (drawToWinOption.nextElementSibling.classList.contains('visible')) {
-		singleDrawOption.nextElementSibling.classList.add('visible');
-		drawToWinOption.nextElementSibling.classList.remove('visible');
+function singleDrawOptionHandler() {
+	if (
+		singleDrawOption.nextElementSibling.firstElementChild.classList.contains(
+			'visible'
+		)
+	) {
+		return;
+	} else {
+		drawToWinOption.nextElementSibling.firstElementChild.classList.remove(
+			'visible'
+		);
+		singleDrawOption.nextElementSibling.firstElementChild.classList.add(
+			'visible'
+		);
+	}
+}
+function drawToWinHandler() {
+	if (
+		drawToWinOption.nextElementSibling.firstElementChild.classList.contains(
+			'visible'
+		)
+	) {
+		return;
+	} else {
+		singleDrawOption.nextElementSibling.firstElementChild.classList.remove(
+			'visible'
+		);
+		drawToWinOption.nextElementSibling.firstElementChild.classList.add(
+			'visible'
+		);
 	}
 }

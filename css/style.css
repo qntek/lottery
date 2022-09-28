@@ -503,9 +503,17 @@ footer .ti-brand-github {
 .nav__box_option-btn {
   display: inline-block;
   text-align: center;
+  cursor: pointer;
 }
 .nav__box_option:hover, .nav__box_option:focus {
   transform: scale(1.05);
+}
+.nav__box_option_underline_box {
+  display: block;
+  width: 100%;
+  height: 11px;
+  overflow: hidden;
+  z-index: 1000;
 }
 .nav__box_option_underline {
   width: 100%;
