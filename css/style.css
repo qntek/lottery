@@ -132,7 +132,7 @@ body {
   align-items: center;
   width: 25px;
   height: 25px;
-  padding: 3px;
+  padding: 10px;
   background: radial-gradient(circle, rgb(213, 173, 54) 28%, rgb(202, 151, 3) 81%);
   border-radius: 50%;
   border: 1px solid rgb(21, 21, 21);

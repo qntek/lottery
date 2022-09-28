@@ -1,10 +1,11 @@
 const footerYear = document.getElementById('year');
 const pickBallBox = document.getElementById('ballBox');
 let userNumbers = [];
-const drawnNumbers = [];
+let drawnNumbers = [];
 const clearUserNumbersBtn = document.querySelector('.ti-x'); //btn to clear user and drawn numbers
 const playBtn = document.querySelector('.ti-player-play'); //btn to start the game
 const insertBox = document.querySelector('.input__box');
+const outputBox = document.querySelector('.output__box');
 const menuBtn = document.querySelector('.menu');
 const singleDrawOption = document.getElementById('opt_1');
 const drawToWinOption = document.getElementById('opt_2');
@@ -14,13 +15,16 @@ pickBallBox.addEventListener('click', (e) => {
 	handlePickedBall(e);
 });
 clearUserNumbersBtn.addEventListener('click', () => {
-	clearInputBox();
+	clearDomBox(insertBox);
+	clearDomBox(outputBox);
 	userNumbers = [];
+	drawnNumbers = [];
 	controlColorOfBtns();
 });
 menuBtn.addEventListener('click', toggleMenuNav);
 singleDrawOption.addEventListener('click', singleDrawOptionHandler);
 drawToWinOption.addEventListener('click', drawToWinHandler);
+playBtn.addEventListener('click', playBtnHandler);
 
 function handlePickedBall(e) {
 	let value = +e.target.textContent;
@@ -38,8 +42,12 @@ function pushBallToUserNumbers(value) {
 	}
 }
 
-function insertIntoUserNumbersBox(obj, array) {
-	clearInputBox();
+async function insertIntoUserNumbersBox(obj, array, ms = 0) {
+	clearDomBox(obj);
+	const putWithDelay = ms => {
+		return new Promise(resolve => setTimeout(resolve, ms))
+	}
+
 	for (const number of array) {
 		const ball = document.createElement('div');
 		ball.classList.add('ball');
@@ -48,8 +56,9 @@ function insertIntoUserNumbersBox(obj, array) {
 			ball.classList.add('ball_js_animation');
 		}
 		ball.textContent = number;
-		obj.appendChild(ball);
+		await putWithDelay(ms).then(obj.append(ball));
 	}
+	
 }
 
 function controlColorOfBtns() {
@@ -73,9 +82,9 @@ function sortArray(array) {
 	});
 }
 
-function clearInputBox() {
-	const inputBox = insertBox.querySelectorAll('.ball');
-	for (const number of inputBox) number.remove();
+function clearDomBox(obj) {
+	const box = obj.querySelectorAll('.ball');
+	for (const number of box) number.remove();
 }
 
 function toggleMenuNav() {
@@ -118,4 +127,26 @@ function drawToWinHandler() {
 			'visible'
 		);
 	}
+}
+
+function playBtnHandler() {
+	const playOnce =
+		singleDrawOption.nextElementSibling.firstElementChild.classList.contains(
+			'visible'
+		);
+	if (userNumbers.length < 6) return;
+	if (playOnce) {
+		drawnNumbers = [];
+		clearDomBox(outputBox);
+		letsDrawNumbers();
+		insertIntoUserNumbersBox(outputBox, drawnNumbers, 500);
+	}
+}
+
+function letsDrawNumbers() {
+	while (drawnNumbers.length < 6) {
+		let tempNumber = Math.floor(Math.random() * 49 + 1);
+		if (!drawnNumbers.includes(tempNumber)) drawnNumbers.push(tempNumber);
+	}
+	sortArray(drawnNumbers);
 }
