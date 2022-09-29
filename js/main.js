@@ -9,6 +9,18 @@ const outputBox = document.querySelector('.output__box');
 const menuBtn = document.querySelector('.menu');
 const singleDrawOption = document.getElementById('opt_1');
 const drawToWinOption = document.getElementById('opt_2');
+const infoWindowCloseBtn = document.getElementById('info_window');
+const infoWindow = document.querySelector('.info__box');
+const results = {
+	0: 0,
+	1: 0,
+	2: 0,
+	3: 0,
+	4: 0,
+	5: 0,
+	6: 0,
+	'single': []
+};
 
 footerYear.textContent = new Date().getFullYear();
 pickBallBox.addEventListener('click', (e) => {
@@ -25,6 +37,9 @@ menuBtn.addEventListener('click', toggleMenuNav);
 singleDrawOption.addEventListener('click', singleDrawOptionHandler);
 drawToWinOption.addEventListener('click', drawToWinHandler);
 playBtn.addEventListener('click', playBtnHandler);
+infoWindowCloseBtn.addEventListener('click', () => {
+	infoWindow.classList.remove('info__box_visible');
+});
 
 function handlePickedBall(e) {
 	let value = +e.target.textContent;
@@ -44,21 +59,20 @@ function pushBallToUserNumbers(value) {
 
 async function insertIntoUserNumbersBox(obj, array, flag, ms = 0) {
 	clearDomBox(obj);
-	const putWithDelay = ms => {
-		return new Promise(resolve => setTimeout(resolve, ms))
-	}
+	const putWithDelay = (ms) => {
+		return new Promise((resolve) => setTimeout(resolve, ms));
+	};
 
 	for (const number of array) {
 		const ball = document.createElement('div');
 		ball.classList.add('ball');
 		ball.classList.add('ball_js');
-		if ((array.indexOf(number) === array.length - 1) || flag) {
+		if (flag || array.indexOf(number) === array.length - 1) {
 			ball.classList.add('ball_js_animation');
 		}
 		ball.textContent = number;
 		await putWithDelay(ms).then(obj.append(ball));
 	}
-	
 }
 
 function controlColorOfBtns() {
@@ -129,18 +143,26 @@ function drawToWinHandler() {
 	}
 }
 
-function playBtnHandler() {
+async function playBtnHandler() {
 	const playOnce =
 		singleDrawOption.nextElementSibling.firstElementChild.classList.contains(
 			'visible'
 		);
+	const drawToWin =
+		drawToWinOption.nextElementSibling.firstElementChild.classList.contains(
+			'visible'
+		);
 	if (userNumbers.length < 6) return;
+	drawnNumbers = [];
+	clearDomBox(outputBox);
 	if (playOnce) {
-		drawnNumbers = [];
-		clearDomBox(outputBox);
 		letsDrawNumbers();
-		insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500);
 	}
+	if (drawToWin) {
+		alert('Under construction');
+	}
+	await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500)
+		displayInfoWindow();
 }
 
 function letsDrawNumbers() {
@@ -149,4 +171,10 @@ function letsDrawNumbers() {
 		if (!drawnNumbers.includes(tempNumber)) drawnNumbers.push(tempNumber);
 	}
 	sortArray(drawnNumbers);
+}
+
+function displayInfoWindow() {
+
+	infoWindow.classList.add('info__box_visible');
+
 }

@@ -23,6 +23,7 @@ body {
 	justify-content: flex-start;
 }
 .menu {
+	-webkit-tap-highlight-color: transparent;
 	position: absolute;
 	left: 0rem;
 	top: 0rem;
@@ -32,9 +33,9 @@ body {
 	.ti-dots {
 		font-size: 3rem;
 		color: rgb(44, 40, 40);
-		// transition: scale 0.3s;
 	}
 }
+
 .box {
 	position: relative;
 	width: 100%;
@@ -96,11 +97,13 @@ body {
 	color: rgba(0, 0, 0, 0.1);
 	&_clear,
 	&_go {
+		-webkit-tap-highlight-color: transparent;
 		cursor: pointer;
 	}
 }
 .btn_active {
 	color: $border_color;
+	text-shadow: 0 0 3px rgba(255, 217, 0, 0.507);
 }
 
 footer {
@@ -113,6 +116,7 @@ footer {
 	align-items: center;
 	border-top: 1px solid $border_color;
 	.footer__logo_box {
+		-webkit-tap-highlight-color: transparent;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -123,6 +127,7 @@ footer {
 		background-color: $main_bgc;
 	}
 	p {
+		-webkit-tap-highlight-color: transparent;
 		font-size: 1.4rem;
 		margin-right: 0.5rem;
 	}
@@ -134,7 +139,7 @@ footer {
 		font-size: 1.6rem;
 	}
 }
-
+// MENU  // MENU // MENU // MENU  // MENU // MENU
 .nav__box {
 	display: flex;
 	flex-direction: column;
@@ -146,7 +151,7 @@ footer {
 	width: 100vw;
 	height: 100vh;
 	background: $main_blue_gradient;
-	z-index: 10;
+	z-index: 15;
 	transition: transform 0.3s linear;
 	&_text {
 		font-size: 2rem;
@@ -157,6 +162,7 @@ footer {
 		align-items: center;
 	}
 	&_option {
+		-webkit-tap-highlight-color: transparent;
 		display: flex;
 		flex-direction: column;
 		min-width: 250px;
@@ -196,18 +202,83 @@ footer {
 .visible {
 	position: relative;
 	display: block;
-	animation: slideRight .1s linear;
+	animation: slideRight 0.1s linear;
 }
 
+// INFO WINDOW  // INFO WINDOW // INFO WINDOW
+
+.info__box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	transform: scale(0);
+	background-color: transparent;
+	overflow: hidden;
+	z-index: -10;
+	&_window {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+		max-width: 80%;
+		min-width: 250px;
+		min-height: 250px;
+		background-color: $main_bgc_full;
+		border: 1px solid black;
+		border-radius: 1.5rem;
+		box-shadow: 1px 1px 2px black;
+	}
+	&_close {
+		position: absolute;
+		right: -10px;
+		top: -10px;
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+		border: 1px solid $border_color;
+		background-color: $btn_close_bgc;
+		box-shadow: 1px 1px 2px black;
+		font-size: 3rem;
+		color: rgb(44, 40, 40);
+		cursor: pointer;
+		transition: background-color 0.3s, transform 0.3s;
+	}
+	&_close:active {
+		transform: scale(0.9);
+		background-color: rgb(150, 16, 16);
+	}
+	&_visible {
+		z-index: 10;
+		animation: showInfo 1s forwards;
+	}
+}
 
 @keyframes slideRight {
 	from {
-		transform: translateX(-100%)
+		transform: translateX(100%);
 	}
 	to {
-		transform: translateX(0)
+		transform: translateX(0);
 	}
 }
 
+@keyframes showInfo {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	10% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
 
-@import "media_min400px";
+@import 'media_min400px';
