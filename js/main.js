@@ -19,7 +19,7 @@ const results = {
 	4: 0,
 	5: 0,
 	6: 0,
-	'single': []
+	single: [],
 };
 
 footerYear.textContent = new Date().getFullYear();
@@ -161,8 +161,8 @@ async function playBtnHandler() {
 	if (drawToWin) {
 		alert('Under construction');
 	}
-	await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500)
-		displayInfoWindow();
+	await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500);
+	displayInfoWindow();
 }
 
 function letsDrawNumbers() {
@@ -174,7 +174,92 @@ function letsDrawNumbers() {
 }
 
 function displayInfoWindow() {
-
 	infoWindow.classList.add('info__box_visible');
+	let output = '';
+	if (compareNumbers().length === 0) {
+		output = `<p>Unfortunately, you haven't hit any numbers.</p>`;
+	} else if (compareNumbers().length === 1) {
+		output = `
+		<p>You've hit one number.</p>
+		<div class="info__box_balls">
+		<div class="ball ball_js">
+                ${compareNumbers()[0]}
+            </div>
+		</div>`;
+	} else if (compareNumbers().length === 2) {
+		output = `
+		<p>You've hit ${compareNumbers().length} numbers.</p>
+		<div class="info__box_balls">
+		<div class="ball ball_js">
+                ${compareNumbers()[0]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[1]}
+            </div>
+		</div>`;
+	} else if (compareNumbers().length === 3) {
+		output = `
+		<p>Not bad! <br>You've hit ${compareNumbers().length} numbers.</p>
+		<div class="info__box_balls">
+		<div class="ball ball_js">
+                ${compareNumbers()[0]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[1]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[2]}
+            </div>
+		</div>`;
+	} else if (compareNumbers().length === 4) {
+		output = `
+		<p>Lucky You! <br>You've hit ${compareNumbers().length} numbers.</p>
+		<div class="info__box_balls">
+		<div class="ball ball_js">
+                ${compareNumbers()[0]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[1]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[2]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[3]}
+            </div>
+		</div>`;
+	} else if (compareNumbers().length === 5) {
+		output = `
+		<p>Wow, so close! <br>You've hit ${compareNumbers().length} numbers.</p>
+		<div class="info__box_balls">
+		<div class="ball ball_js">
+                ${compareNumbers()[0]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[1]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[2]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[3]}
+            </div>
+			<div class="ball ball_js">
+                ${compareNumbers()[4]}
+            </div>
+		</div>`;
+	} else if (compareNumbers().length === 6) {
+		output = `
+		<p>This is impossible! <br>You have won! <br>You should definitely play the real lottery!</p>`;
+	} else output = 'Something went wrong :('
+	infoWindowCloseBtn.nextElementSibling.innerHTML = output;
+}
 
+function compareNumbers() {
+	const sameNumbers = [];
+	for (let i of userNumbers) {
+		if (drawnNumbers.includes(i)) sameNumbers.push(i);
+	}
+	sortArray(sameNumbers);
+	return sameNumbers;
 }

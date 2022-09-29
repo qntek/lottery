@@ -256,6 +256,26 @@ footer {
 		z-index: 10;
 		animation: showInfo 1s forwards;
 	}
+	&_text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 1.3rem;
+		font-size: 2.4rem;
+		.ball {
+			margin-top: 2.4rem;
+		}
+	}
+	&_balls {
+		display: flex;
+		width: 100%;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-evenly;
+		align-items: center;
+		
+	}
 }
 
 @keyframes slideRight {
