@@ -97,7 +97,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	font-size: 4rem;
-	color: rgba(0, 0, 0, 0.1);
+	color: rgba(0, 0, 0, 0.3);
 	&_clear,
 	&_go {
 		-webkit-tap-highlight-color: transparent;
@@ -111,7 +111,7 @@ body {
 }
 .btn_active {
 	color: $border_color;
-	text-shadow: 1px 1px 3px black;
+	text-shadow: 0px 0px 3px $dark-gold;
 }
 
 footer {
@@ -262,7 +262,7 @@ footer {
 		background-color: rgb(150, 16, 16);
 	}
 	&_visible {
-		animation: showInfo .5s forwards;
+		animation: showInfo .3s forwards;
 	}
 	&_text {
 		display: flex;
@@ -271,6 +271,7 @@ footer {
 		text-align: center;
 		padding: 1.3rem;
 		font-size: 2.4rem;
+		line-height: 150%;
 		.ball {
 			margin-top: 2.4rem;
 		}
@@ -282,7 +283,27 @@ footer {
 		flex-wrap: nowrap;
 		justify-content: space-evenly;
 		align-items: center;
-		
+	}
+	&_statistic-ul {
+		letter-spacing: 1px;
+		text-align: justify;
+		padding-top: 2rem;
+		padding-left: 2rem;
+		.span-dark {
+			color: $dark-gold;
+		}	
+		.span-light {
+			color: $light_gold;
+		}
+		.span-red {
+			color: $span-red;
+		}
+
+	}
+	&_statistic-paragraph {
+		font-size: 130%;
+		color: $dark-gold;
+		letter-spacing: 1px;
 	}
 }
 

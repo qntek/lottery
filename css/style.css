@@ -430,7 +430,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 4rem;
-  color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.3);
 }
 .button__box_clear, .button__box_go {
   -webkit-tap-highlight-color: transparent;
@@ -443,7 +443,7 @@ body {
 
 .btn_active {
   color: rgb(21, 21, 21);
-  text-shadow: 1px 1px 3px black;
+  text-shadow: 0px 0px 3px rgb(202, 151, 3);
 }
 
 footer {
@@ -595,8 +595,8 @@ footer .ti-brand-github {
   background-color: rgb(150, 16, 16);
 }
 .info__box_visible {
-  -webkit-animation: showInfo 0.5s forwards;
-          animation: showInfo 0.5s forwards;
+  -webkit-animation: showInfo 0.3s forwards;
+          animation: showInfo 0.3s forwards;
 }
 .info__box_text {
   display: flex;
@@ -605,6 +605,7 @@ footer .ti-brand-github {
   text-align: center;
   padding: 1.3rem;
   font-size: 2.4rem;
+  line-height: 150%;
 }
 .info__box_text .ball {
   margin-top: 2.4rem;
@@ -616,6 +617,26 @@ footer .ti-brand-github {
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
+}
+.info__box_statistic-ul {
+  letter-spacing: 1px;
+  text-align: justify;
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
+.info__box_statistic-ul .span-dark {
+  color: rgb(202, 151, 3);
+}
+.info__box_statistic-ul .span-light {
+  color: rgb(213, 173, 54);
+}
+.info__box_statistic-ul .span-red {
+  color: rgb(194, 20, 20);
+}
+.info__box_statistic-paragraph {
+  font-size: 130%;
+  color: rgb(202, 151, 3);
+  letter-spacing: 1px;
 }
 
 @-webkit-keyframes slideRight {
@@ -693,12 +714,10 @@ footer .ti-brand-github {
     font-size: 1.8rem;
   }
   .button__box {
-    margin: 0 auto;
     padding: 2rem;
     width: 200px;
     height: 30px;
     font-size: 5rem;
-    color: rgba(0, 0, 0, 0.1);
   }
   .ball_js {
     transform: scale(1.3);
@@ -749,12 +768,10 @@ footer .ti-brand-github {
     font-size: 2rem;
   }
   .button__box {
-    margin: 0 auto;
     padding: 2rem;
     width: 200px;
     height: 30px;
     font-size: 5rem;
-    color: rgba(0, 0, 0, 0.1);
   }
   .ball_js {
     transform: scale(1.3);
@@ -780,5 +797,76 @@ footer .ti-brand-github {
   .nav__box_option {
     padding: 1.5rem;
     font-size: 5.5em;
+  }
+  .info__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 8;
+  }
+  .info__box_window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    max-width: 80%;
+    min-width: 350px;
+    min-height: 250px;
+    margin-top: 6vh;
+    background-color: rgb(231, 230, 218);
+    border: 1px solid black;
+    border-radius: 1.5rem;
+    box-shadow: 1px 1px 2px black;
+  }
+  .info__box_close {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid rgb(21, 21, 21);
+    background-color: rgb(194, 20, 20);
+    box-shadow: 1px 1px 2px black;
+    font-size: 3rem;
+    color: rgb(44, 40, 40);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .info__box_close:active {
+    transform: scale(0.9);
+    background-color: rgb(150, 16, 16);
+  }
+  .info__box_visible {
+    -webkit-animation: showInfo 0.3s forwards;
+            animation: showInfo 0.3s forwards;
+  }
+  .info__box_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.3rem;
+    font-size: 2.4rem;
+    line-height: 150%;
+  }
+  .info__box_text .ball {
+    margin-top: 2.4rem;
+  }
+  .info__box_balls {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }/*# sourceMappingURL=style.css.map */

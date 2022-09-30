@@ -19,7 +19,8 @@ const results = {
 	4: 0,
 	5: 0,
 	6: 0,
-	single: [],
+	counter: 0,
+	time: 0,
 };
 
 footerYear.textContent = new Date().getFullYear();
@@ -160,12 +161,32 @@ async function playBtnHandler() {
 	clearDomBox(outputBox);
 	if (playOnce) {
 		letsDrawNumbers();
+		await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 400);
+		displayInfoWindow();
 	}
 	if (drawToWin) {
-		alert('Under construction');
+		let start = new Date();
+		for (let i in results) {
+			results[i] = 0;
+		}
+		while (results['6'] < 1) {
+			drawnNumbers = [];
+			results.counter++;
+			letsDrawNumbers();
+			if (compareNumbers().length === 0) results['0']++;
+			else if (compareNumbers().length === 1) results['1']++;
+			else if (compareNumbers().length === 2) results['2']++;
+			else if (compareNumbers().length === 3) results['3']++;
+			else if (compareNumbers().length === 4) results['4']++;
+			else if (compareNumbers().length === 5) results['5']++;
+			else if (compareNumbers().length === 6) results['6']++;
+		}
+		let end = new Date();
+		results.time = (end.getTime() - start.getTime()) / 1000;
+		await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 400);
+		displayInfoWindowStatistic();
 	}
-	await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500);
-	displayInfoWindow();
+
 	playBtn.addEventListener('click', playBtnHandler);
 	clearUserNumbersBtn.addEventListener('click', clearBtnHandler);
 }
@@ -257,6 +278,25 @@ function displayInfoWindow() {
 		output = `
 		<p>This is impossible! <br>You have won! <br>You should definitely play the real lottery!</p>`;
 	} else output = 'Something went wrong :(';
+	infoWindowCloseBtn.nextElementSibling.innerHTML = output;
+}
+
+function displayInfoWindowStatistic() {
+	let output = '';
+	infoWindow.classList.add('info__box_visible');
+	output = `
+	<p class="info__box_statistic-paragraph">Drawing statistics</p>
+	<ul class="info__box_statistic-ul">
+        <li>Total draws: ${results.counter}</li>
+        <li>Zero: ${results['0']}</li>
+        <li>One: ${results['1']}</li>
+        <li>Two: ${results['2']}</li>
+        <li>Three: ${results['3']}</li>
+        <li>Four: ${results['4']}</li>
+        <li>Five: ${results['5']}</li>
+        <li>Six: ${results['6']}</li><br>
+        <li>Total time: <span class="span-red">${results.time.toFixed(1)}</span>s</li>
+    </ul>`;
 	infoWindowCloseBtn.nextElementSibling.innerHTML = output;
 }
 
