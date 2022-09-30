@@ -16,7 +16,7 @@ body {
 	width: 80%;
 	height: 100vh;
 	min-width: 300px;
-	max-width: 1000px;
+	max-width: 769px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -34,6 +34,9 @@ body {
 		font-size: 3rem;
 		color: rgb(44, 40, 40);
 	}
+}
+.menu:active {
+	transform: scale(0.8);
 }
 
 .box {
@@ -99,11 +102,16 @@ body {
 	&_go {
 		-webkit-tap-highlight-color: transparent;
 		cursor: pointer;
+		transition: transform 0.3s;
+	}
+	&_clear:active,
+	&_go:active {
+		transform: scale(0.8);
 	}
 }
 .btn_active {
 	color: $border_color;
-	text-shadow: 0 0 3px rgba(255, 217, 0, 0.507);
+	text-shadow: 1px 1px 3px black;
 }
 
 footer {
@@ -152,7 +160,7 @@ footer {
 	height: 100vh;
 	background: $main_blue_gradient;
 	z-index: 15;
-	transition: transform 0.3s linear;
+	transition: transform 0.15s ease-in;
 	&_text {
 		font-size: 2rem;
 	}
@@ -219,7 +227,7 @@ footer {
 	transform: scale(0);
 	background-color: transparent;
 	overflow: hidden;
-	z-index: -10;
+	z-index: 8;
 	&_window {
 		display: flex;
 		flex-direction: column;
@@ -227,7 +235,8 @@ footer {
 		position: relative;
 		max-width: 80%;
 		min-width: 250px;
-		min-height: 250px;
+		min-height: 230px;
+		margin-top: 5vh;
 		background-color: $main_bgc_full;
 		border: 1px solid black;
 		border-radius: 1.5rem;
@@ -253,7 +262,6 @@ footer {
 		background-color: rgb(150, 16, 16);
 	}
 	&_visible {
-		z-index: 10;
 		animation: showInfo 1s forwards;
 	}
 	&_text {

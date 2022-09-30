@@ -26,13 +26,7 @@ footerYear.textContent = new Date().getFullYear();
 pickBallBox.addEventListener('click', (e) => {
 	handlePickedBall(e);
 });
-clearUserNumbersBtn.addEventListener('click', () => {
-	clearDomBox(insertBox);
-	clearDomBox(outputBox);
-	userNumbers = [];
-	drawnNumbers = [];
-	controlColorOfBtns();
-});
+clearUserNumbersBtn.addEventListener('click', clearBtnHandler);
 menuBtn.addEventListener('click', toggleMenuNav);
 singleDrawOption.addEventListener('click', singleDrawOptionHandler);
 drawToWinOption.addEventListener('click', drawToWinHandler);
@@ -40,6 +34,13 @@ playBtn.addEventListener('click', playBtnHandler);
 infoWindowCloseBtn.addEventListener('click', () => {
 	infoWindow.classList.remove('info__box_visible');
 });
+function clearBtnHandler() {
+	clearDomBox(insertBox);
+	clearDomBox(outputBox);
+	userNumbers = [];
+	drawnNumbers = [];
+	controlColorOfBtns();
+}
 
 function handlePickedBall(e) {
 	let value = +e.target.textContent;
@@ -153,6 +154,8 @@ async function playBtnHandler() {
 			'visible'
 		);
 	if (userNumbers.length < 6) return;
+	playBtn.removeEventListener('click', playBtnHandler);
+	clearUserNumbersBtn.removeEventListener('click', clearBtnHandler);
 	drawnNumbers = [];
 	clearDomBox(outputBox);
 	if (playOnce) {
@@ -163,6 +166,8 @@ async function playBtnHandler() {
 	}
 	await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 500);
 	displayInfoWindow();
+	playBtn.addEventListener('click', playBtnHandler);
+	clearUserNumbersBtn.addEventListener('click', clearBtnHandler);
 }
 
 function letsDrawNumbers() {
@@ -251,7 +256,7 @@ function displayInfoWindow() {
 	} else if (compareNumbers().length === 6) {
 		output = `
 		<p>This is impossible! <br>You have won! <br>You should definitely play the real lottery!</p>`;
-	} else output = 'Something went wrong :('
+	} else output = 'Something went wrong :(';
 	infoWindowCloseBtn.nextElementSibling.innerHTML = output;
 }
 

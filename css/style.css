@@ -49,7 +49,7 @@ body {
   width: 80%;
   height: 100vh;
   min-width: 300px;
-  max-width: 1000px;
+  max-width: 769px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,6 +68,10 @@ body {
 .menu .ti-dots {
   font-size: 3rem;
   color: rgb(44, 40, 40);
+}
+
+.menu:active {
+  transform: scale(0.8);
 }
 
 .box {
@@ -426,11 +430,15 @@ body {
 .button__box_clear, .button__box_go {
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  transition: transform 0.3s;
+}
+.button__box_clear:active, .button__box_go:active {
+  transform: scale(0.8);
 }
 
 .btn_active {
   color: rgb(21, 21, 21);
-  text-shadow: 0 0 3px rgba(255, 217, 0, 0.507);
+  text-shadow: 1px 1px 3px black;
 }
 
 footer {
@@ -479,7 +487,7 @@ footer .ti-brand-github {
   height: 100vh;
   background: radial-gradient(circle, rgb(68, 136, 191) 53%, rgb(38, 89, 153) 100%);
   z-index: 15;
-  transition: transform 0.3s linear;
+  transition: transform 0.15s ease-in;
 }
 .nav__box_text {
   font-size: 2rem;
@@ -546,7 +554,7 @@ footer .ti-brand-github {
   transform: scale(0);
   background-color: transparent;
   overflow: hidden;
-  z-index: -10;
+  z-index: 8;
 }
 .info__box_window {
   display: flex;
@@ -555,7 +563,8 @@ footer .ti-brand-github {
   position: relative;
   max-width: 80%;
   min-width: 250px;
-  min-height: 250px;
+  min-height: 230px;
+  margin-top: 5vh;
   background-color: rgb(231, 230, 218);
   border: 1px solid black;
   border-radius: 1.5rem;
@@ -581,7 +590,6 @@ footer .ti-brand-github {
   background-color: rgb(150, 16, 16);
 }
 .info__box_visible {
-  z-index: 10;
   -webkit-animation: showInfo 1s forwards;
           animation: showInfo 1s forwards;
 }
