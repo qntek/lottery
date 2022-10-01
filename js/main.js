@@ -118,6 +118,7 @@ function singleDrawOptionHandler() {
 			'visible'
 		)
 	) {
+		setTimeout(toggleMenuNav, 500);
 		return;
 	} else {
 		drawToWinOption.nextElementSibling.firstElementChild.classList.remove(
@@ -127,6 +128,7 @@ function singleDrawOptionHandler() {
 			'visible'
 		);
 	}
+	setTimeout(toggleMenuNav, 500);
 }
 function drawToWinHandler() {
 	if (
@@ -134,6 +136,7 @@ function drawToWinHandler() {
 			'visible'
 		)
 	) {
+		setTimeout(toggleMenuNav, 500);
 		return;
 	} else {
 		singleDrawOption.nextElementSibling.firstElementChild.classList.remove(
@@ -143,6 +146,7 @@ function drawToWinHandler() {
 			'visible'
 		);
 	}
+	setTimeout(toggleMenuNav, 500);
 }
 
 async function playBtnHandler() {
@@ -295,7 +299,9 @@ function displayInfoWindowStatistic() {
         <li>Four: ${results['4']}</li>
         <li>Five: ${results['5']}</li>
         <li>Six: ${results['6']}</li><br>
-        <p>Total time: <span class="span-red">${results.time.toFixed(1)}</span>s</p>
+        <p>Total time: <span class="span-red">${results.time.toFixed(
+					1
+				)}</span>s</p>
     </ul>`;
 	infoWindowCloseBtn.nextElementSibling.innerHTML = output;
 }
