@@ -801,7 +801,7 @@ footer .ti-brand-github {
     font-size: 5.5em;
   }
   .info__box_window {
-    max-width: 80%;
+    max-width: 400px;
     min-width: 350px;
     min-height: 250px;
     margin-top: 6vh;
