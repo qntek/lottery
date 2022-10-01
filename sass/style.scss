@@ -234,7 +234,8 @@ footer {
 		justify-content: center;
 		position: relative;
 		max-width: 80%;
-		min-width: 250px;
+		width: 100%;
+		min-width: 260px;
 		min-height: 230px;
 		margin-top: 6vh;
 		background-color: $main_bgc_full;
@@ -270,7 +271,7 @@ footer {
 		align-items: center;
 		text-align: center;
 		padding: 1.3rem;
-		font-size: 2.4rem;
+		font-size: 2rem;
 		line-height: 150%;
 		.ball {
 			margin-top: 2.4rem;
@@ -286,9 +287,10 @@ footer {
 	}
 	&_statistic-ul {
 		letter-spacing: 1px;
+		word-spacing: 1px;
 		text-align: justify;
 		padding-top: 2rem;
-		padding-left: 2rem;
+		padding-left: 1.5rem;
 		.span-dark {
 			color: $dark-gold;
 		}	

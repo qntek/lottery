@@ -295,7 +295,7 @@ function displayInfoWindowStatistic() {
         <li>Four: ${results['4']}</li>
         <li>Five: ${results['5']}</li>
         <li>Six: ${results['6']}</li><br>
-        <li>Total time: <span class="span-red">${results.time.toFixed(1)}</span>s</li>
+        <p>Total time: <span class="span-red">${results.time.toFixed(1)}</span>s</p>
     </ul>`;
 	infoWindowCloseBtn.nextElementSibling.innerHTML = output;
 }
