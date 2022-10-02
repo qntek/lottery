@@ -65,7 +65,7 @@ function pushBallToUserNumbers(value) {
 async function insertIntoUserNumbersBox(obj, array, flag, ms = 0) {
 	clearDomBox(obj);
 	const putWithDelay = (ms) => {
-		return new Promise((resolve) => setTimeout(resolve, ms));
+		return sleep(ms);
 	};
 
 	for (const number of array) {
@@ -181,18 +181,20 @@ async function playBtnHandler() {
 		for (let i in results) {
 			results[i] = 0;
 		}
-		while (results['6'] < 1) {
-			drawnNumbers = [];
-			results.counter++;
-			letsDrawNumbers();
-			if (compareNumbers().length === 0) results['0']++;
-			else if (compareNumbers().length === 1) results['1']++;
-			else if (compareNumbers().length === 2) results['2']++;
-			else if (compareNumbers().length === 3) results['3']++;
-			else if (compareNumbers().length === 4) results['4']++;
-			else if (compareNumbers().length === 5) results['5']++;
-			else if (compareNumbers().length === 6) results['6']++;
-		}
+		await sleep(500).then(() => {
+			while (results['6'] < 1) {
+				drawnNumbers = [];
+				results.counter++;
+				letsDrawNumbers();
+				if (compareNumbers().length === 0) results['0']++;
+				else if (compareNumbers().length === 1) results['1']++;
+				else if (compareNumbers().length === 2) results['2']++;
+				else if (compareNumbers().length === 3) results['3']++;
+				else if (compareNumbers().length === 4) results['4']++;
+				else if (compareNumbers().length === 5) results['5']++;
+				else if (compareNumbers().length === 6) results['6']++;
+			}
+		})
 		let end = new Date();
 		results.time = (end.getTime() - start.getTime()) / 1000;
 		await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 400);
@@ -324,10 +326,6 @@ function compareNumbers() {
 	return sameNumbers;
 }
 
-function sleep(milliseconds) {
-	const date = Date.now();
-	let currentDate = null;
-	do {
-	  currentDate = Date.now();
-	} while (currentDate - date < milliseconds);
+async function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
   }
