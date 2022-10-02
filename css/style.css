@@ -487,7 +487,7 @@ footer .ti-brand-github {
   justify-content: center;
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: radial-gradient(circle, rgb(68, 136, 191) 53%, rgb(38, 89, 153) 100%);
@@ -537,7 +537,7 @@ footer .ti-brand-github {
 }
 
 .nav__active {
-  transform: translateX(100%);
+  transform: translateX(-100%);
 }
 
 .visible {

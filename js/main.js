@@ -3,7 +3,7 @@ const pickBallBox = document.getElementById('ballBox');
 let userNumbers = [];
 let drawnNumbers = [];
 const clearUserNumbersBtn = document.querySelector('.ti-x'); //btn to clear user and drawn numbers
-const playBtn = document.querySelector('.ti-player-play'); //btn to start the game
+let playBtn = document.querySelector('.ti-player-play'); //btn to start the game
 const insertBox = document.querySelector('.input__box');
 const outputBox = document.querySelector('.output__box');
 const menuBtn = document.querySelector('.menu');
@@ -48,10 +48,13 @@ function handlePickedBall(e) {
 	if (value > 0 && value < 50) {
 	} else return;
 	pushBallToUserNumbers(value);
-	insertIntoUserNumbersBox(insertBox, userNumbers, false);
+	const amountOfBalls = insertBox.querySelectorAll('div');
+	if (amountOfBalls.length < 6)
+		insertIntoUserNumbersBox(insertBox, userNumbers, false);
 }
 
 function pushBallToUserNumbers(value) {
+	if (userNumbers.length >= 6) return;
 	if (userNumbers.length < 6 && !userNumbers.includes(value)) {
 		userNumbers.push(value);
 		controlColorOfBtns();
@@ -150,6 +153,7 @@ function drawToWinHandler() {
 }
 
 async function playBtnHandler() {
+	const playButton = document.getElementById('play-btn');
 	const playOnce =
 		singleDrawOption.nextElementSibling.firstElementChild.classList.contains(
 			'visible'
@@ -163,12 +167,16 @@ async function playBtnHandler() {
 	clearUserNumbersBtn.removeEventListener('click', clearBtnHandler);
 	drawnNumbers = [];
 	clearDomBox(outputBox);
+	playButton.innerHTML = `<i class="ti ti-hourglass-empty btn_active"></i>`;
 	if (playOnce) {
 		letsDrawNumbers();
 		await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 400);
 		displayInfoWindow();
 	}
 	if (drawToWin) {
+		while (!playButton.firstElementChild.classList.contains('ti-hourglass-empty')) {
+			playButton.innerHTML = `<i class="ti ti-hourglass-empty btn_active"></i>`;
+		}
 		let start = new Date();
 		for (let i in results) {
 			results[i] = 0;
@@ -190,7 +198,8 @@ async function playBtnHandler() {
 		await insertIntoUserNumbersBox(outputBox, drawnNumbers, true, 400);
 		displayInfoWindowStatistic();
 	}
-
+	playButton.innerHTML = `<i class="ti ti-player-play btn_active"></i>`;
+	playBtn = document.querySelector('.ti-player-play');
 	playBtn.addEventListener('click', playBtnHandler);
 	clearUserNumbersBtn.addEventListener('click', clearBtnHandler);
 }
@@ -314,3 +323,11 @@ function compareNumbers() {
 	sortArray(sameNumbers);
 	return sameNumbers;
 }
+
+function sleep(milliseconds) {
+	const date = Date.now();
+	let currentDate = null;
+	do {
+	  currentDate = Date.now();
+	} while (currentDate - date < milliseconds);
+  }
