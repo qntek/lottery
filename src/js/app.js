@@ -1,3 +1,5 @@
+import '../scss/main.scss'
+
 const footerYear = document.getElementById('year');
 const pickBallBox = document.getElementById('ballBox');
 let userNumbers = [];
